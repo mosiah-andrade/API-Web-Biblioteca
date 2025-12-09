@@ -3,14 +3,12 @@ import { AppDataSource } from "../data-source";
 import { Livro } from "../entity/Livro";
 
 export class LivroController {
-    // Repository sendo chamado diretamente (sem Service)
     private livroRepository = AppDataSource.getRepository(Livro);
 
     // 1. Criar Livro (POST)
     async create(req: Request, res: Response) {
         const { titulo, autor, isbn, anoPublicacao, disponivel } = req.body;
 
-        // Lógica de Negócio: Validação simples [cite: 20]
         if (!titulo || !autor || !isbn) {
             return res.status(400).json({ message: "Campos obrigatórios faltando." });
         }
@@ -51,7 +49,6 @@ export class LivroController {
             return res.status(404).json({ message: "Livro não encontrado" });
         }
 
-        // Atualizando campos
         livro.titulo = titulo ?? livro.titulo;
         livro.autor = autor ?? livro.autor;
         livro.isbn = isbn ?? livro.isbn;

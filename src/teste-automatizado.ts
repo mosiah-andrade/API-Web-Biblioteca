@@ -1,4 +1,4 @@
-// src/teste-automatizado.ts
+
 
 const BASE_URL = 'http://localhost:3000/api/livros';
 
@@ -78,5 +78,4 @@ async function runTests() {
     }
 }
 
-// Executar a função
 runTests();
